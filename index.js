@@ -20,7 +20,16 @@ app.get('/dogs',(req,res)=>{
 res.send('hi');
 });
 
-
+app.get('/products', async (req,res)=>{
+    try{
+const products= await Product.find({});
+res.render('./products/index',{products});
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+});
 
 app.listen('3000',()=>{
     console.log('Server Started');
