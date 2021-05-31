@@ -22,10 +22,6 @@ app.use(methodOverride('_method'));
 
 const categories = ['fruit', 'vegetable', 'dairy'];
 
-app.get('/dogs',(req,res)=>{
-res.send('hi');
-});
-
 app.get('/products', async (req,res)=>{
 
     try{
