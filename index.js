@@ -73,6 +73,14 @@ app.put('/products/:id',async(req,res)=>{
     res.redirect(`/products/${product._id}`);
 });
 
+
+app.delete('/products/:id',async(req,res)=>{
+    const {id}=req.params;
+    await Product.findByIdAndDelete(id);
+    res.redirect(`/products`);
+});
+
+
 app.post('/products',async(req,res)=>{
     
 const product = new Product(req.body);
