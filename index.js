@@ -27,9 +27,18 @@ res.send('hi');
 });
 
 app.get('/products', async (req,res)=>{
+
     try{
+        if(req.query.category)
+        {
+            const products= await Product.find({category:req.query.category});
+res.render('./products/index',{products,category:req.query.category});
+        }
+        else
+        {
 const products= await Product.find({});
-res.render('./products/index',{products});
+res.render('./products/index',{products,category:'All'});
+        }
     }
     catch(e)
     {
